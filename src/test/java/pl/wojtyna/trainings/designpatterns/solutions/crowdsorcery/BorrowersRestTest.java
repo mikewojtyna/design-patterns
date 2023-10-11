@@ -1,4 +1,4 @@
-package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery;
+package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +21,19 @@ public class BorrowersRestTest {
 
     @Test
     void registerProblems() throws Exception {
-        mockMvc.perform(post("/problems/borrowers").contentType(MediaType.APPLICATION_JSON)
-                                                   .content("{\"name\": \"John\", \"surname\": \"Doe\"}"))
+        mockMvc.perform(post("/solutions/borrowers").contentType(MediaType.APPLICATION_JSON)
+                                                    .content("{\"name\": \"John\", \"surname\": \"Doe\"}"))
                .andExpect(status().isOk());
-        mockMvc.perform(post("/problems/borrowers")
+        mockMvc.perform(post("/solutions/borrowers")
                             .contentType(MediaType.APPLICATION_JSON)
                             .content("{\"name\": \"George\", \"surname\": \"Martin\"}"))
                .andExpect(status().isOk());
-        mockMvc.perform(post("/problems/borrowers")
+        mockMvc.perform(post("/solutions/borrowers")
                             .contentType(MediaType.APPLICATION_JSON)
                             .content("{\"name\": \"Henry\", \"surname\": \"Holmes\"}"))
                .andExpect(status().isOk());
 
-        mockMvc.perform(get("/problems/borrowers"))
+        mockMvc.perform(get("/solutions/borrowers"))
                .andExpect(status().isOk())
                .andExpect(jsonPath("$.size()").value(3));
     }

@@ -1,13 +1,13 @@
-package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.controllers;
+package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.domain.Borrower;
-import pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.infrastructure.BorrowersRegistryFactory;
+import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.domain.Borrower;
+import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.infrastructure.BorrowersRegistryFactory;
 
 import java.util.SequencedCollection;
 
 @RestController
-@RequestMapping("/problems/borrowers")
+@RequestMapping("/solutions/borrowers")
 public class BorrowersRestController {
 
     private final BorrowersRegistryFactory borrowersRegistryFactory;
