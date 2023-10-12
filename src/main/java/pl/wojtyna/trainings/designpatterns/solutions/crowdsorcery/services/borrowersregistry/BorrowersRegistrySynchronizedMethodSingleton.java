@@ -1,4 +1,4 @@
-package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.services;
+package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.services.borrowersregistry;
 
 import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.domain.Borrower;
 import pl.wojtyna.trainings.designpatterns.solutions.patterns.SingletonPattern;
@@ -9,27 +9,20 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
 @SingletonPattern
-public class BorrowersRegistry {
+public class BorrowersRegistrySynchronizedMethodSingleton {
 
-    private static volatile BorrowersRegistry instance;
+    private static BorrowersRegistrySynchronizedMethodSingleton instance;
     private final ConcurrentLinkedQueue<Borrower> borrowers;
 
-    private BorrowersRegistry() {
+    private BorrowersRegistrySynchronizedMethodSingleton() {
         this.borrowers = loadInitialDataFromSomeVerySlowDatabase();
     }
 
-    public static BorrowersRegistry create() {
-        if (instance != null) {
-            return instance;
+    public static synchronized BorrowersRegistrySynchronizedMethodSingleton create() {
+        if (instance == null) {
+            instance = new BorrowersRegistrySynchronizedMethodSingleton();
         }
-        else {
-            synchronized (BorrowersRegistry.class) {
-                if (instance == null) {
-                    instance = new BorrowersRegistry();
-                }
-                return instance;
-            }
-        }
+        return instance;
     }
 
     public void register(Borrower borrower) {
