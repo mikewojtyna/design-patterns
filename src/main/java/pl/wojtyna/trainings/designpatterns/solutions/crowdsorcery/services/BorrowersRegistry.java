@@ -1,12 +1,14 @@
 package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.services;
 
 import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.domain.Borrower;
+import pl.wojtyna.trainings.designpatterns.solutions.patterns.SingletonPattern;
 
 import java.util.List;
 import java.util.SequencedCollection;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
+@SingletonPattern
 public class BorrowersRegistry {
 
     private static volatile BorrowersRegistry instance;
