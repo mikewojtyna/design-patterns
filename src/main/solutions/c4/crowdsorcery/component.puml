@@ -1,0 +1,48 @@
+@startuml
+!include ../libs/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Component diagram for CrowdSorcery backend
+
+Container(frontend, "Web Application", "React")
+System_Ext(payment_system, "Payment System")
+
+Container_Boundary(api, "CrowdSorcery backend") {
+        Component(borrowers_registry_rest_api, "Borrowers Registry REST API", "Spring REST controller")
+        Component(investors_registry_rest_api, "Investors Registry REST API", "Spring REST controller")
+        Component(fundraising_rest_api, "Fundraising REST API", "Spring REST controller")
+        Component(investing_rest_api, "Investing REST API", "Spring REST controller")
+        Component(simulation_rest_api, "Investment simulations REST API", "Spring REST controller")
+        Component(investment_portfolio_rest_api, "Investment portfolio REST API", "Spring REST controller")
+
+        Component(borrowers_registry_service, "Borrowers Registry", "Spring Service", "Registers borrowers")
+        Component(investors_registry_service, "Investors Registry", "Spring Service", "Registers investors")
+        Component(fundraising_service, "Fundraising", "Spring Service", "Starts fundraising")
+        Component(investing_service, "Investing", "Spring Service", "Allows investors to invest into assets")
+        Component(simulation_service, "Investment simulations", "Spring Service", "Allows investors to test their investment strategies")
+        Component(investment_portfolio_service, "Investment portfolio", "Spring Service", "Manages investment portfolios")
+
+        Component(payment_gateway, "Payment Gateway", "Spring Service", "Acts as ACL to the external payment system")
+}
+
+Rel(frontend, borrowers_registry_rest_api, "calls", "HTTPS")
+Rel(frontend, investors_registry_rest_api, "calls", "HTTPS")
+Rel(frontend, fundraising_rest_api, "calls", "HTTPS")
+Rel(frontend, investing_rest_api, "calls", "HTTPS")
+Rel(frontend, simulation_rest_api, "calls", "HTTPS")
+Rel(frontend, investment_portfolio_rest_api, "calls", "HTTPS")
+
+Rel(borrowers_registry_rest_api, borrowers_registry_service, "delegates to")
+Rel(investors_registry_rest_api, investors_registry_service, "delegates to")
+Rel(fundraising_rest_api, fundraising_service, "delegates to")
+Rel(investing_rest_api, investing_service, "delegates to")
+Rel(simulation_rest_api, simulation_service, "delegates to")
+Rel(investment_portfolio_rest_api, investment_portfolio_service, "delegates to")
+
+Rel(fundraising_service, payment_gateway, "uses")
+Rel(investing_service, payment_gateway, "uses")
+
+Rel(payment_gateway, payment_system, "integrates with")
+
+@enduml

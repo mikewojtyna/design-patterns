@@ -1,0 +1,17 @@
+@startuml
+!include ../libs/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title System Context diagram for CrowdSorcery
+
+Person(investor, "Investor")
+Person(borrower, "Borrower")
+System(crowd_sorcery, "CrowdSorcery", "Allows investors to invest passively into any asset according to automated investment strategies.")
+
+System_Ext(payment_system, "Payment System")
+
+Rel(investor, crowd_sorcery, "Invests into assets using")
+Rel(borrower, crowd_sorcery, "Fundraising using")
+Rel_Neighbor(crowd_sorcery, payment_system, "Manages payments using")
+@enduml

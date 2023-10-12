@@ -1,8 +1,8 @@
-package pl.wojtyna.trainings.designpatterns.solutions.patterns;
+package pl.wojtyna.trainings.designpatterns.patterns;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.SOURCE)
-public @interface AclPattern {
+public @interface ChainOfResponsibilityPattern {
 }

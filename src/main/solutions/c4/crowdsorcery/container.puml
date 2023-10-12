@@ -1,0 +1,29 @@
+@startuml
+!include ../libs/C4_Container.puml
+
+' LAYOUT_TOP_DOWN()
+' LAYOUT_AS_SKETCH()
+LAYOUT_WITH_LEGEND()
+
+title Container diagram for CrowdSorcery
+
+Person(investor, "Investor")
+Person(borrower, "Borrower")
+
+System_Boundary(crowd_sorcery, "CrowdSorcery") {
+    Container(frontend, "Web Application", "React")
+    ContainerDb(database, "Database", "MongoDb", "Stores all data")
+    Container(backend_api, "CrowdSorcery backend", "Spring, REST","Hosts the domain logic")
+    Container(event_streamer, "Event streamer", "", "Delivers events between modules")
+}
+
+System_Ext(payment_system, "Payment System")
+
+Rel(investor, frontend, "Uses", "HTTPS")
+Rel(borrower, frontend, "Uses", "HTTPS")
+Rel_Neighbor(frontend, backend_api, "Executes commands and queries")
+Rel_Neighbor(backend_api, database, "Reads from and writes to")
+Rel(backend_api, event_streamer, "Publishes events and reads them")
+Rel(backend_api, payment_system, "Manages payments using")
+
+@enduml

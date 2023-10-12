@@ -1,4 +1,4 @@
-package pl.wojtyna.trainings.designpatterns.solutions.patterns;
+package pl.wojtyna.trainings.designpatterns.patterns;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,6 +6,6 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.SOURCE)
-@Target(ElementType.METHOD)
-public @interface FactoryMethodPattern {
+@Target(ElementType.TYPE)
+public @interface AbstractFactoryPattern {
 }

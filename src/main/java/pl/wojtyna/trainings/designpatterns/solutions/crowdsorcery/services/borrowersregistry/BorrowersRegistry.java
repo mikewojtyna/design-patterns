@@ -1,7 +1,7 @@
 package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.services.borrowersregistry;
 
 import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.domain.Borrower;
-import pl.wojtyna.trainings.designpatterns.solutions.patterns.SingletonPattern;
+import pl.wojtyna.trainings.designpatterns.patterns.SingletonPattern;
 
 import java.util.List;
 import java.util.SequencedCollection;
