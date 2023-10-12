@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BorrowersRegistry {
 
-    private static BorrowersRegistry instance;
+    private static volatile BorrowersRegistry instance;
     private final ConcurrentLinkedQueue<Borrower> borrowers;
 
     private BorrowersRegistry() {
@@ -44,7 +44,7 @@ public class BorrowersRegistry {
 
     private ConcurrentLinkedQueue<Borrower> loadInitialDataFromSomeVerySlowDatabase() {
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(1);
             return new ConcurrentLinkedQueue<>();
         }
         catch (InterruptedException e) {
