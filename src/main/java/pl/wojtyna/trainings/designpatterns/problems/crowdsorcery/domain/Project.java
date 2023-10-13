@@ -3,6 +3,7 @@ package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.domain;
 import lombok.Getter;
 import org.joda.money.Money;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -22,8 +23,9 @@ public class Project {
     private Money deposit;
     private Map<String, Money> investors;
     private List<String> milestones;
-    @Getter
     private boolean project;
+    private String repaymentSchedule;
+    private LocalDate lastPaymentDate;
 
     public Project(String title, String description, Money goal, String loanSchedule,
                    double interestRate, int creditScore, String status, boolean proposal) {
@@ -35,6 +37,14 @@ public class Project {
         this.creditScore = creditScore;
         this.status = status;
         this.proposal = proposal;
+    }
+
+    public void setLastPaymentDate(LocalDate lastPaymentDate) {
+        this.lastPaymentDate = lastPaymentDate;
+    }
+
+    public void setRepaymentSchedule(String repaymentSchedule) {
+        this.repaymentSchedule = repaymentSchedule;
     }
 
     public void setProject(boolean project) {
@@ -137,5 +147,4 @@ public class Project {
             "creditScore=" + creditScore + ", " +
             "status=" + status + ']';
     }
-
 }

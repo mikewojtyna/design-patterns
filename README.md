@@ -72,7 +72,7 @@ Investors receive returns based on the assets or projects they invested in. Retu
 
 ### Receiving funds
 
-Borrowers receive funds according to the load schedule. For example, if the schedule is monthly, borrower will receive 1/N of the total amount every month. If the schedule is milestone, borrower will receive the money after reaching the specified milestones.
+Borrowers receive funds according to the loan schedule. For example, if the schedule is monthly, borrower will receive 1/N of the total amount every month. If the schedule is milestone, borrower will receive the money after reaching the specified milestones.
 
 ### Handling defaults
 

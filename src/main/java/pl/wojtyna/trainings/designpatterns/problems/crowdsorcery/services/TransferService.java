@@ -5,17 +5,18 @@ import org.joda.money.Money;
 
 public class TransferService {
 
-    private final DepositService depositService;
-    private final InvestorFinder investorFinder;
-
-    public TransferService(DepositService depositService, InvestorFinder investorFinder) {
-        this.depositService = depositService;
-        this.investorFinder = investorFinder;
-    }
+    private final DepositService depositService = new DepositService();
+    private final InvestorAndBorrowerFinder investorAndBorrowerFinder = new InvestorAndBorrowerFinder();
 
     @Transactional
     public void transfer(Money money, String fromInvestor, String toBorrower) {
-        depositService.withdraw(money, investorFinder.findByName(fromInvestor));
-        depositService.deposit(money, investorFinder.findByName(toBorrower));
+        depositService.withdraw(money, investorAndBorrowerFinder.findByName(fromInvestor));
+        depositService.deposit(money, investorAndBorrowerFinder.findByName(toBorrower));
+    }
+
+    @Transactional
+    public void transferFromBorrowerToInvestor(Money money, String toInvestor, String fromBorrower) {
+        depositService.withdraw(money, investorAndBorrowerFinder.findBorrowerByName(fromBorrower));
+        depositService.deposit(money, investorAndBorrowerFinder.findByName(toInvestor));
     }
 }

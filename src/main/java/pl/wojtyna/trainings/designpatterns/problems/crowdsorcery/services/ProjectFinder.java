@@ -7,6 +7,10 @@ import java.util.List;
 public class ProjectFinder {
 
     public List<Project> byAsset(String asset) {
-        return null;
+        return List.of();
+    }
+
+    public List<Project> all() {
+        return List.of();
     }
 }
