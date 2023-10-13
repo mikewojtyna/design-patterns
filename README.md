@@ -42,11 +42,11 @@ Borrower needs to create the **Project Proposal** first. This is a document cont
 - **Interest rate** - how much interest will the borrower pay?
 - **Borrower's credit score** - how reliable is the borrower?
 
-Project proposal goes through following states:
+Project can be in one of the following states:
 
 1. **Draft** - borrower is working on the proposal.
 2. **Pending** - borrower submitted the proposal and is waiting for the decision.
-3. **Accepted** - proposal was accepted immediately.
+3. **Accepted** - proposal was accepted immediately
 4. **Accepted for manual verification** - proposal was initially accepted, but needs to be verified manually.
 5. **Rejected** - proposal was rejected by the verifiers and borrower cannot start the fundraising.
 

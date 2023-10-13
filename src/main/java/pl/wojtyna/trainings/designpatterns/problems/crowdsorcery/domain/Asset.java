@@ -1,4 +1,5 @@
 package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.domain;
 
-public record Investor(String name) {
+public record Asset(String name, String risk) {
+
 }
