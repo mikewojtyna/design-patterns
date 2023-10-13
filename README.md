@@ -25,6 +25,7 @@ interest rate.
 - Investors can invest manually into given asset.
 - Investors can invest manually into specific project.
 - Investors receive returns based on the assets or projects they invested in and the **Repayment Schedule**.
+- Investors can run investment simulations to test their investment strategies on historical data.
 - Borrowers receive funds to finance their projects based on the **Loan Schedule**.
 - Handling defaults.
 
@@ -58,6 +59,12 @@ There are three ways how investors can invest their money:
 - **Manual investment into project** - investor can choose to invest into specific project. This is useful when investor wants to invest into specific project.
 
 Before investor can invest into asset or project, he needs to deposit money into his account. Investor can withdraw his money at any time.
+
+### Investment simulation
+
+Investors can run investment simulations to test their investment strategies on historical data. This allows them to see how their strategies would perform in the past. This is useful for testing new strategies or for testing existing strategies on new assets.
+
+Investment simulations might require a lot of time to run.
 
 ### Returns
 
