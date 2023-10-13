@@ -1,6 +1,6 @@
 package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.task1;
 
-public interface InterestService {
+public interface InterestServiceContract {
 
     void payProjectInterest();
 

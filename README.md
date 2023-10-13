@@ -35,7 +35,7 @@ Borrower needs to create the **Project Proposal** first. This is a document cont
 
 - **Project description** - what is the project about?
 - **Project goal** - how much money does the borrower need?
-- **Load schedule** - when does the borrower need the money? There are three types of schedules:
+- **Loan schedule** - when does the borrower need the money? There are three types of schedules:
     - **All at once** - borrower gets all the money immediately.
     - **Fixed** - borrowers gets the money every X months.
     - **Milestone** - borrower gets the money after reaching the specified milestones.

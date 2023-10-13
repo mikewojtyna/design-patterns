@@ -1,6 +1,6 @@
 package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.task1;
 
-public interface DepositService {
+public interface DepositServiceContract {
 
     void makeDeposit();
 
