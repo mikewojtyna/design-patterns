@@ -30,25 +30,30 @@ public class FundraisingService {
 
     void proposeProject(Project project) {
         if ("DRAFT".equals(project.status())) {
-            project.setStatus("PROPOSED");
+            project.setStatus("PENDING");
             project.setProposal(true);
         }
     }
 
     void processProposal(Project project) {
-        if (project.isProposal()
+        if ("PENDING".equals(project.status()) && project.isProposal() && project.getInterestRate() > 0.3) {
+            project.setStatus("VERIFICATION_REQUIRED");
+        }
+        else if (project.isProposal()
+            && "PENDING".equals(project.status())
             && project.getCreditScore() > 100
             && project.getGoal().isLessThan(Money.parse("USD 100000"))
             && (project.description().contains("blockchain")
             || project.description().contains("AI"))) {
             project.setStatus("ACCEPTED");
             project.setProposal(false);
+            project.setProject(true);
         }
-        else if (project.isProposal() && project.getCreditScore() < 100) {
+        else if (project.isProposal() && "PENDING".equals(project.status()) && project.getCreditScore() < 100) {
             project.setStatus("VERIFICATION_REQUIRED");
         }
-        else if (project.isProposal() && project.getCreditScore() > 100 && project.getGoal().isGreaterThan(Money.parse(
-            "USD 100000"))) {
+        else if (project.isProposal() && "PENDING".equals(project.status()) && project.getCreditScore() > 100 &&
+            project.getGoal().isGreaterThan(Money.parse("USD 100000"))) {
             project.setStatus("VERIFICATION_REQUIRED");
         }
         else if (project.getGoal().isGreaterThan(Money.parse("USD 100000"))) {
@@ -65,6 +70,8 @@ public class FundraisingService {
     void acceptProposal(Project project) {
         if (project.isProposal()) {
             project.setStatus("ACCEPTED");
+            project.setProposal(false);
+            project.setProject(true);
         }
     }
 

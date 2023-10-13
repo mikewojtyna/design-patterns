@@ -22,6 +22,8 @@ public class Project {
     private Money deposit;
     private Map<String, Money> investors;
     private List<String> milestones;
+    @Getter
+    private boolean project;
 
     public Project(String title, String description, Money goal, String loanSchedule,
                    double interestRate, int creditScore, String status, boolean proposal) {
@@ -33,6 +35,10 @@ public class Project {
         this.creditScore = creditScore;
         this.status = status;
         this.proposal = proposal;
+    }
+
+    public void setProject(boolean project) {
+        this.project = project;
     }
 
     public void setBorrower(String borrower) {
