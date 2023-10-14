@@ -1,7 +1,6 @@
 package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task1;
 
 import org.joda.money.Money;
-import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.domain.InvestorId;
 
 public interface DepositService {
 

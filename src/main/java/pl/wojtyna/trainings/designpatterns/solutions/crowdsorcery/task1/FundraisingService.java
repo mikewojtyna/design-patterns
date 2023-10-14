@@ -1,7 +1,5 @@
 package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task1;
 
-import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.domain.*;
-
 public interface FundraisingService {
 
     ProposalDraft createProposalDraft(ProposalDraftData proposalDraftData);
