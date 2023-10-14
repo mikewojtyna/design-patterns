@@ -19,23 +19,23 @@ public class FundraisingService {
         this.transferService = transferService;
     }
 
-    Project createProposalDraft(String title,
-                                String description,
-                                Money goal,
-                                String loanSchedule,
-                                double interestRate,
-                                int creditScore) {
+    public Project createProposalDraft(String title,
+                                       String description,
+                                       Money goal,
+                                       String loanSchedule,
+                                       double interestRate,
+                                       int creditScore) {
         return new Project(title, description, goal, loanSchedule, interestRate, creditScore, "DRAFT", false);
     }
 
-    void proposeProject(Project project) {
+    public void proposeProject(Project project) {
         if ("DRAFT".equals(project.status())) {
             project.setStatus("PENDING");
             project.setProposal(true);
         }
     }
 
-    void processProposal(Project project) {
+    public void processProposal(Project project) {
         if ("PENDING".equals(project.status()) && project.isProposal() && project.getInterestRate() > 0.3) {
             project.setStatus("VERIFICATION_REQUIRED");
         }
@@ -61,13 +61,13 @@ public class FundraisingService {
         }
     }
 
-    void rejectProposal(Project project) {
+    public void rejectProposal(Project project) {
         if (project.isProposal()) {
             project.setStatus("REJECTED");
         }
     }
 
-    void acceptProposal(Project project) {
+    public void acceptProposal(Project project) {
         if (project.isProposal()) {
             project.setStatus("ACCEPTED");
             project.setProposal(false);
@@ -75,13 +75,13 @@ public class FundraisingService {
         }
     }
 
-    void startFundraising(Project project) {
+    public void startFundraising(Project project) {
         if ("ACCEPTED".equals(project.status())) {
             project.setStatus("FUNDRAISING");
         }
     }
 
-    void depositInto(Project project, Money money, String investorId) {
+    public void depositInto(Project project, Money money, String investorId) {
         if ("FUNDRAISING".equals(project.status())) {
             project.setDeposit(project.getDeposit().plus(money));
             project.getInvestors().put(investorId, money);

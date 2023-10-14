@@ -2,13 +2,13 @@ package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.services;
 
 import pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.domain.Investor;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
 public class InvestorsRegistry {
 
-    private final ConcurrentLinkedQueue<Investor> investors;
+    private final List<Investor> investors;
 
     public InvestorsRegistry() {
         this.investors = loadInitialDataFromSomeVerySlowDatabase();
@@ -23,13 +23,13 @@ public class InvestorsRegistry {
     }
 
     public List<Investor> getInvestors() {
-        return List.copyOf(investors);
+        return investors;
     }
 
-    private ConcurrentLinkedQueue<Investor> loadInitialDataFromSomeVerySlowDatabase() {
+    private List<Investor> loadInitialDataFromSomeVerySlowDatabase() {
         try {
             TimeUnit.SECONDS.sleep(2);
-            return new ConcurrentLinkedQueue<>();
+            return new ArrayList<>();
         }
         catch (InterruptedException e) {
             throw new RuntimeException(e);

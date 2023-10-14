@@ -2,14 +2,13 @@ package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.services;
 
 import pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.domain.Borrower;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.SequencedCollection;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
 public class BorrowersRegistry {
 
-    private final ConcurrentLinkedQueue<Borrower> borrowers;
+    private final List<Borrower> borrowers;
 
     public BorrowersRegistry() {
         this.borrowers = loadInitialDataFromSomeVerySlowDatabase();
@@ -23,14 +22,14 @@ public class BorrowersRegistry {
         borrowers.remove(borrower);
     }
 
-    public SequencedCollection<Borrower> getBorrowers() {
-        return List.copyOf(borrowers);
+    public List<Borrower> getBorrowers() {
+        return borrowers;
     }
 
-    private ConcurrentLinkedQueue<Borrower> loadInitialDataFromSomeVerySlowDatabase() {
+    private List<Borrower> loadInitialDataFromSomeVerySlowDatabase() {
         try {
             TimeUnit.SECONDS.sleep(2);
-            return new ConcurrentLinkedQueue<>();
+            return new ArrayList<>();
         }
         catch (InterruptedException e) {
             throw new RuntimeException(e);

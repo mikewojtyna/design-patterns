@@ -11,7 +11,7 @@ public class TransferService {
     @Transactional
     public void transfer(Money money, String fromInvestor, String toBorrower) {
         depositService.withdraw(money, investorAndBorrowerFinder.findByName(fromInvestor));
-        depositService.deposit(money, investorAndBorrowerFinder.findByName(toBorrower));
+        depositService.deposit(money, investorAndBorrowerFinder.findBorrowerByName(toBorrower));
     }
 
     @Transactional

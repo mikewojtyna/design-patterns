@@ -1,6 +1,8 @@
 package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.domain;
 
-import lombok.Getter;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import org.joda.money.Money;
 
 import java.time.LocalDate;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-@Getter
+@Entity
 public class Project {
 
     private String borrower;
@@ -21,11 +23,15 @@ public class Project {
     private String status;
     private boolean proposal;
     private Money deposit;
+    @ElementCollection
     private Map<String, Money> investors;
+    @ElementCollection
     private List<String> milestones;
     private boolean project;
     private String repaymentSchedule;
     private LocalDate lastPaymentDate;
+    @Id
+    private Long id;
 
     public Project(String title, String description, Money goal, String loanSchedule,
                    double interestRate, int creditScore, String status, boolean proposal) {
@@ -39,64 +45,8 @@ public class Project {
         this.proposal = proposal;
     }
 
-    public void setLastPaymentDate(LocalDate lastPaymentDate) {
-        this.lastPaymentDate = lastPaymentDate;
-    }
+    public Project() {
 
-    public void setRepaymentSchedule(String repaymentSchedule) {
-        this.repaymentSchedule = repaymentSchedule;
-    }
-
-    public void setProject(boolean project) {
-        this.project = project;
-    }
-
-    public void setBorrower(String borrower) {
-        this.borrower = borrower;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setGoal(Money goal) {
-        this.goal = goal;
-    }
-
-    public void setLoanSchedule(String loanSchedule) {
-        this.loanSchedule = loanSchedule;
-    }
-
-    public void setInterestRate(double interestRate) {
-        this.interestRate = interestRate;
-    }
-
-    public void setCreditScore(int creditScore) {
-        this.creditScore = creditScore;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setProposal(boolean proposal) {
-        this.proposal = proposal;
-    }
-
-    public void setDeposit(Money deposit) {
-        this.deposit = deposit;
-    }
-
-    public void setInvestors(Map<String, Money> investors) {
-        this.investors = investors;
-    }
-
-    public void setMilestones(List<String> milestones) {
-        this.milestones = milestones;
     }
 
     public String title() {return title;}
@@ -114,29 +64,6 @@ public class Project {
     public String status() {return status;}
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj == null || obj.getClass() != this.getClass()) {
-            return false;
-        }
-        var that = (Project) obj;
-        return Objects.equals(this.title, that.title) &&
-            Objects.equals(this.description, that.description) &&
-            Objects.equals(this.goal, that.goal) &&
-            Objects.equals(this.loanSchedule, that.loanSchedule) &&
-            Double.doubleToLongBits(this.interestRate) == Double.doubleToLongBits(that.interestRate) &&
-            this.creditScore == that.creditScore &&
-            Objects.equals(this.status, that.status);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, description, goal, loanSchedule, interestRate, creditScore, status);
-    }
-
-    @Override
     public String toString() {
         return "Project[" +
             "title=" + title + ", " +
@@ -146,5 +73,178 @@ public class Project {
             "interestRate=" + interestRate + ", " +
             "creditScore=" + creditScore + ", " +
             "status=" + status + ']';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Project project1 = (Project) o;
+        return Double.compare(interestRate,
+                              project1.interestRate) == 0 && creditScore == project1.creditScore && proposal == project1.proposal && project == project1.project && Objects.equals(
+            borrower,
+            project1.borrower) && Objects.equals(title, project1.title) && Objects.equals(description,
+                                                                                          project1.description) && Objects.equals(
+            goal,
+            project1.goal) && Objects.equals(loanSchedule, project1.loanSchedule) && Objects.equals(
+            status,
+            project1.status) && Objects.equals(deposit, project1.deposit) && Objects.equals(investors,
+                                                                                            project1.investors) && Objects.equals(
+            milestones,
+            project1.milestones) && Objects.equals(repaymentSchedule,
+                                                   project1.repaymentSchedule) && Objects.equals(
+            lastPaymentDate,
+            project1.lastPaymentDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(borrower,
+                            title,
+                            description,
+                            goal,
+                            loanSchedule,
+                            interestRate,
+                            creditScore,
+                            status,
+                            proposal,
+                            deposit,
+                            investors,
+                            milestones,
+                            project,
+                            repaymentSchedule,
+                            lastPaymentDate);
+    }
+
+    public String getBorrower() {
+        return borrower;
+    }
+
+    public void setBorrower(String borrower) {
+        this.borrower = borrower;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Money getGoal() {
+        return goal;
+    }
+
+    public void setGoal(Money goal) {
+        this.goal = goal;
+    }
+
+    public String getLoanSchedule() {
+        return loanSchedule;
+    }
+
+    public void setLoanSchedule(String loanSchedule) {
+        this.loanSchedule = loanSchedule;
+    }
+
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    public int getCreditScore() {
+        return creditScore;
+    }
+
+    public void setCreditScore(int creditScore) {
+        this.creditScore = creditScore;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public boolean isProposal() {
+        return proposal;
+    }
+
+    public void setProposal(boolean proposal) {
+        this.proposal = proposal;
+    }
+
+    public Money getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Money deposit) {
+        this.deposit = deposit;
+    }
+
+    public Map<String, Money> getInvestors() {
+        return investors;
+    }
+
+    public void setInvestors(Map<String, Money> investors) {
+        this.investors = investors;
+    }
+
+    public List<String> getMilestones() {
+        return milestones;
+    }
+
+    public void setMilestones(List<String> milestones) {
+        this.milestones = milestones;
+    }
+
+    public boolean isProject() {
+        return project;
+    }
+
+    public void setProject(boolean project) {
+        this.project = project;
+    }
+
+    public String getRepaymentSchedule() {
+        return repaymentSchedule;
+    }
+
+    public void setRepaymentSchedule(String repaymentSchedule) {
+        this.repaymentSchedule = repaymentSchedule;
+    }
+
+    public LocalDate getLastPaymentDate() {
+        return lastPaymentDate;
+    }
+
+    public void setLastPaymentDate(LocalDate lastPaymentDate) {
+        this.lastPaymentDate = lastPaymentDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
