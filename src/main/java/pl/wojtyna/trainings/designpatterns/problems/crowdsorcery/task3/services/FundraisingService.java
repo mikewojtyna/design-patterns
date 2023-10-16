@@ -1,7 +1,9 @@
-package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.base.services;
+package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.task3.services;
 
 import org.joda.money.Money;
 import pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.base.domain.Project;
+import pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.base.services.InvestorsRegistry;
+import pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.base.services.TransferService;
 
 import java.math.RoundingMode;
 import java.util.Map;
@@ -9,7 +11,7 @@ import java.util.Map;
 public class FundraisingService {
 
     private InvestorsRegistry investorsRegistry;
-    private TransferService transferService;
+    private pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.base.services.TransferService transferService;
     private int processedProposals;
 
     public void setInvestorsRegistry(InvestorsRegistry investorsRegistry) {

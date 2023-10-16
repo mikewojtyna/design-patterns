@@ -2,9 +2,9 @@ package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task2;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task2.borrowersregistry.BorrowersRegistry;
-import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task2.borrowersregistry.BorrowersRegistryEnum;
-import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task2.borrowersregistry.BorrowersRegistrySynchronizedMethodSingleton;
+import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task2.services.BorrowersRegistry;
+import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task2.services.BorrowersRegistryEnum;
+import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task2.services.BorrowersRegistrySynchronizedMethodSingleton;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;

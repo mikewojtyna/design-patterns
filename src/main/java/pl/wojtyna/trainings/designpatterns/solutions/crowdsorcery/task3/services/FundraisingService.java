@@ -1,18 +1,18 @@
-package pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.base.services;
+package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task3.services;
 
 import org.joda.money.Money;
-import pl.wojtyna.trainings.designpatterns.problems.crowdsorcery.base.domain.Project;
+import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task3.domain.Project;
 
 import java.math.RoundingMode;
 import java.util.Map;
 
 public class FundraisingService {
 
-    private InvestorsRegistry investorsRegistry;
+    private InvestorRegistry investorsRegistry;
     private TransferService transferService;
     private int processedProposals;
 
-    public void setInvestorsRegistry(InvestorsRegistry investorsRegistry) {
+    public void setInvestorsRegistry(InvestorRegistry investorsRegistry) {
         this.investorsRegistry = investorsRegistry;
     }
 
@@ -36,33 +36,19 @@ public class FundraisingService {
         }
     }
 
-    public void processProposal(Project project) {
-        if (processedProposals > 1000) {
+    public void processProposal(Project project, ProposalProcessor proposalProcessor) {
+        if (processedProposals > 999) {
             project.setStatus("REJECTED");
             return;
         }
-        if ("PENDING".equals(project.status()) && project.isProposal() && project.getInterestRate() > 0.3) {
-            project.setStatus("VERIFICATION_REQUIRED");
+        var decision = proposalProcessor.process(project);
+        if ("NO_DECISION".equals(decision)) {
+            return;
         }
-        else if (project.isProposal()
-            && "PENDING".equals(project.status())
-            && project.getCreditScore() > 100
-            && project.getGoal().isLessThan(Money.parse("USD 100000"))
-            && (project.description().contains("blockchain")
-            || project.description().contains("AI"))) {
-            project.setStatus("ACCEPTED");
+        project.setStatus(decision);
+        if ("ACCEPTED".equals(decision)) {
             project.setProposal(false);
             project.setProject(true);
-        }
-        else if (project.isProposal() && "PENDING".equals(project.status()) && project.getCreditScore() < 100) {
-            project.setStatus("VERIFICATION_REQUIRED");
-        }
-        else if (project.isProposal() && "PENDING".equals(project.status()) && project.getCreditScore() > 100 &&
-            project.getGoal().isGreaterThan(Money.parse("USD 100000"))) {
-            project.setStatus("VERIFICATION_REQUIRED");
-        }
-        else if (project.getGoal().isGreaterThan(Money.parse("USD 100000"))) {
-            project.setStatus("REJECTED");
         }
         processedProposals++;
     }
