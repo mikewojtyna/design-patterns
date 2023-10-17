@@ -13,7 +13,7 @@ It's time to make it right.
 Extract the responsibility of creating proposal processors from the fundraising service controller, so you can easily change the factory logic without affecting the clients.
 
 ### Solution
-As always, you can find the solution in the `solutions.crowdsorcery.task5` package. You can follow the `patterns.FactoryPattern` annotation.
+As always, you can find the solution in the `solutions.crowdsorcery.task5` package. You can follow the `patterns.AbstractFactoryPattern` annotation.
 
 ## Discussion
 - How did the introduction of the factory affect the number of test cases that need to be verified when interacting with REST endpoint?
