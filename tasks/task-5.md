@@ -18,3 +18,4 @@ As always, you can find the solution in the `solutions.crowdsorcery.task5` packa
 ## Discussion
 - How did the introduction of the factory affect the number of test cases that need to be verified when interacting with REST endpoint?
 - How many classes need to be changed when making totally different decision (e.g. based on tenant) regarding choosing the proposal processor?
+- And finally... Who creates the factory? In other words, "Who watches the watchmen"? ;) ![watchmen.jpg](watchmen.jpg)
