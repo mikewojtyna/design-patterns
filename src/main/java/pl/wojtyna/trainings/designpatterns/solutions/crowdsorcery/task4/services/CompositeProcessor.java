@@ -1,9 +1,11 @@
 package pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task4.services;
 
+import pl.wojtyna.trainings.designpatterns.annotations.CompositePattern;
 import pl.wojtyna.trainings.designpatterns.solutions.crowdsorcery.task4.domain.Project;
 
 import java.util.List;
 
+@CompositePattern
 public class CompositeProcessor implements ProposalProcessor {
 
     private final List<ProposalProcessor> processors;
