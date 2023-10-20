@@ -11,7 +11,7 @@ Refactor the `processProposal` method to use the Strategy pattern and write test
 Do you see any other methods that could be refactored using the Strategy pattern?
 
 ### Solution
-You can find solutions in the `solutions.crowdsorcery.task3` package. You can follow the `patterns.StrategyPattern` annotation.
+You can find solutions in the `solutions.crowdsorcery.task3` package. You can follow the `StrategyPattern` annotation.
 
 ## Discussion
 - How does the introduction of the strategy affect the number of test cases that need to be verified?

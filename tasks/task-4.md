@@ -15,7 +15,7 @@ Split `GodClassProposalProcessor` into smaller processors, each responsible only
 Use Composite pattern to improve the implementation of the `ProposalProcessor`. Write tests.
 
 ### Solution
-You can find solutions in the `solutions.crowdsorcery.task4` package. You can follow the `patterns.StrategyPattern` and `patterns.CompositePattern`.
+You can find solutions in the `solutions.crowdsorcery.task4` package. You can follow the `StrategyPattern` and `CompositePattern`.
 
 ## Discussion
 - How does the introduction of the composite affect the number of test cases that need to be verified?
