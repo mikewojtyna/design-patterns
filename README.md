@@ -47,8 +47,13 @@ Project can be in one of the following states:
 1. **Draft** - borrower is working on the proposal.
 2. **Pending** - borrower submitted the proposal and is waiting for the decision.
 3. **Accepted** - proposal was accepted immediately
-4. **Accepted for manual verification** - proposal was initially accepted, but needs to be verified manually.
+4. **Verification Required** - proposal was initially accepted, but needs to be verified manually.
 5. **Rejected** - proposal was rejected by the verifiers and borrower cannot start the fundraising.
+6. **Fundraising** - borrower is currently fundraising.
+7. **Funded** - borrower reached the goal and is waiting for the money.
+8. **Cancelled** - the project was cancelled.
+9. **Default** - borrower didn't repay the loan on time.
+10. **Finished** - borrower repaid the loan on time.
 
 ### Investing
 
