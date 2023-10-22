@@ -47,11 +47,11 @@ public class FundraisingService {
             project.setStatus("VERIFICATION_REQUIRED");
         }
         else if (project.isProposal()
-            && "PENDING".equals(project.status())
-            && project.getCreditScore() > 100
-            && project.getGoal().isLessThan(Money.parse("USD 100000"))
-            && (project.description().contains("blockchain")
-            || project.description().contains("AI"))) {
+                 && "PENDING".equals(project.status())
+                 && project.getCreditScore() > 100
+                 && project.getGoal().isLessThan(Money.parse("USD 100000"))
+                 && (project.description().contains("blockchain")
+                     || project.description().contains("AI"))) {
             project.setStatus("ACCEPTED");
             project.setProposal(false);
             project.setProject(true);
@@ -60,7 +60,7 @@ public class FundraisingService {
             project.setStatus("VERIFICATION_REQUIRED");
         }
         else if (project.isProposal() && "PENDING".equals(project.status()) && project.getCreditScore() > 100 &&
-            project.getGoal().isGreaterThan(Money.parse("USD 100000"))) {
+                 project.getGoal().isGreaterThan(Money.parse("USD 100000"))) {
             project.setStatus("VERIFICATION_REQUIRED");
         }
         else if (project.getGoal().isGreaterThan(Money.parse("USD 100000"))) {
@@ -104,14 +104,17 @@ public class FundraisingService {
         if (project.status().equals("FUNDED")) {
             if ("ALL_AT_ONCE".equals(project.getLoanSchedule())) {
                 for (Map.Entry<String, Money> investorEntry : project.getInvestors().entrySet()) {
-                    transferService.transfer(investorEntry.getValue(), investorEntry.getKey(), project.getBorrower());
+                    transferService.transferFromInvestorToBorrower(investorEntry.getValue(),
+                                                                   investorEntry.getKey(),
+                                                                   project.getBorrower());
                 }
             }
             else if ("MONTHLY".equals(project.getLoanSchedule())) {
                 for (Map.Entry<String, Money> investorEntry : project.getInvestors().entrySet()) {
-                    transferService.transfer(investorEntry.getValue().dividedBy(12, RoundingMode.UP),
-                                             investorEntry.getKey(),
-                                             project.getBorrower());
+                    transferService.transferFromInvestorToBorrower(investorEntry.getValue()
+                                                                                .dividedBy(12, RoundingMode.UP),
+                                                                   investorEntry.getKey(),
+                                                                   project.getBorrower());
                 }
             }
             else if ("MILESTONE".equals(project.getLoanSchedule())) {
@@ -120,10 +123,11 @@ public class FundraisingService {
                                                                                                       .contains("THIRD")) {
                     for (Map.Entry<String, Money> investorEntry : project.getInvestors().entrySet()) {
                         Money payment = investorEntry.getValue().dividedBy(3, RoundingMode.UP);
-                        transferService.transfer(investorEntry.getValue()
-                                                              .dividedBy(payment.getAmount(), RoundingMode.UP),
-                                                 investorEntry.getKey(),
-                                                 project.getBorrower());
+                        transferService.transferFromInvestorToBorrower(investorEntry.getValue()
+                                                                                    .dividedBy(payment.getAmount(),
+                                                                                               RoundingMode.UP),
+                                                                       investorEntry.getKey(),
+                                                                       project.getBorrower());
                     }
                 }
             }

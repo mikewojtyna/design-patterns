@@ -9,7 +9,7 @@ public class TransferService {
     private final InvestorAndBorrowerFinder investorAndBorrowerFinder = new InvestorAndBorrowerFinder();
 
     @Transactional
-    public void transfer(Money money, String fromInvestor, String toBorrower) {
+    public void transferFromInvestorToBorrower(Money money, String fromInvestor, String toBorrower) {
         depositService.withdraw(money, investorAndBorrowerFinder.findByName(fromInvestor));
         depositService.deposit(money, investorAndBorrowerFinder.findBorrowerByName(toBorrower));
     }

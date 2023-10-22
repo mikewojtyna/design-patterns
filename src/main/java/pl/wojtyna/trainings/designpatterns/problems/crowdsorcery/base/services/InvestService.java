@@ -67,7 +67,7 @@ public class InvestService {
     void investIntoProject(Investor investor, Money amount, Project project) {
         project.setDeposit(project.getDeposit().plus(amount));
         project.getInvestors().put(investor.name(), amount);
-        transferService.transfer(amount, investor.name(), project.getTitle());
+        transferService.transferFromInvestorToBorrower(amount, investor.name(), project.getTitle());
     }
 
     private void youGetWhatIMean() {
