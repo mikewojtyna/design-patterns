@@ -11,6 +11,11 @@ public class FundraisingService {
     private InvestorsRegistry investorsRegistry;
     private TransferService transferService;
     private int processedProposals;
+    private InvestorAndBorrowerFinder investorAndBorrowerFinder;
+    private MailAddressFinder mailAddressFinder;
+    private MailNotifications mailNotifications;
+    private SlackNotifications slackNotifications;
+    private MarketingProcess marketingProcess;
 
     public void setInvestorsRegistry(InvestorsRegistry investorsRegistry) {
         this.investorsRegistry = investorsRegistry;
@@ -78,6 +83,12 @@ public class FundraisingService {
             project.setStatus("ACCEPTED");
             project.setProposal(false);
             project.setProject(true);
+            var borrower = investorAndBorrowerFinder.findBorrowerByName(project.getBorrower());
+            mailNotifications.sendMail(mailAddressFinder.findMailAddress(borrower),
+                                       "Your proposal has been accepted",
+                                       " Your proposal has been accepted. Congratulations!");
+            slackNotifications.sendSlackMessage("Your proposal has been accepted. Congratulations!");
+            marketingProcess.beginCampaign("Campaign name", project);
         }
     }
 
