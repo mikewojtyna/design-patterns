@@ -1,3 +1,7 @@
 # Layers & API design in CrowdSorcery
 
-Propose architectural layers, and assign their responsibilities. Propose API system design using C4 model.
+## Your task
+Propose architectural layers, and assign their responsibilities in CrowdSorcery. Propose API system design using C4 model.
+
+## Solution
+You can find the solution in the `solutions/task-0` directory in the root.
