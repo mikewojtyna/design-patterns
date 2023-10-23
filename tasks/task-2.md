@@ -13,3 +13,4 @@ You can find solutions in the `solutions.crowdsorcery.task2` package. You can fo
 ## Discussion
 - What's your implementation of the Singleton pattern?
 - Are there any other flavours of the Singleton pattern you're aware of? What are their pros and cons?
+- Some people consider Singleton an anti-pattern. What are the arguments for and against?
