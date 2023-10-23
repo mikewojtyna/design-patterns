@@ -1,4 +1,4 @@
-# Portfolio builder
+# Fundraising service states - the State Pattern
 
 Let's take a look at the
 [FundraisingService.java](..%2Fsrc%2Fmain%2Fjava%2Fpl%2Fwojtyna%2Ftrainings%2Fdesignpatterns%2Fproblems%2Fcrowdsorcery%2Ftask9%2Fservices%2FFundraisingService.java)
