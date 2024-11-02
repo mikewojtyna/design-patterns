@@ -1,8 +1,8 @@
 # Transfer service changes - the Adapter Pattern
 
-Let's talk about transfers. Take a look at these two classes: 
-- [The old transfer service](..%2Fsrc%2Fmain%2Fjava%2Fpl%2Fwojtyna%2Ftrainings%2Fdesignpatterns%2Fproblems%2Fcrowdsorcery%2Ftask11%2FOldTransferService.java)
-- [A new transfer service](..%2Fsrc%2Fmain%2Fjava%2Fpl%2Fwojtyna%2Ftrainings%2Fdesignpatterns%2Fproblems%2Fcrowdsorcery%2Ftask11%2FTransferService.java) 
+Let's talk about transfers. Take a look at these two classes:
+- [old transfer service](..%2Fsrc%2Fmain%2Fjava%2Fpl%2Fwojtyna%2Ftrainings%2Fdesignpatterns%2Fproblems%2Fcrowdsorcery%2Ftask11%2Fservices%2FOldTransferService.java)
+- [new transfer service](..%2Fsrc%2Fmain%2Fjava%2Fpl%2Fwojtyna%2Ftrainings%2Fdesignpatterns%2Fproblems%2Fcrowdsorcery%2Ftask11%2Fservices%2FTransferService.java) 
 
 ## Problems
 The old implementation of the transfer service was extremely naive. It simply assumed we're operating as a bank and we're responsible for managing deposits directly in our local database using local transactions. Obviously, this doesn't make any sense. Therefore, we decided to change the transfer service to use an external API. This API is exposed as a [Payment Gateway class](..%2Fsrc%2Fmain%2Fjava%2Fpl%2Fwojtyna%2Ftrainings%2Fdesignpatterns%2Fproblems%2Fcrowdsorcery%2Ftask11%2FPaymentGateway.java).

@@ -59,8 +59,9 @@ public class TransferService {
                 }
             }
         }
-
-        throw new RuntimeException("Transfer failed");
+        if (!OperationStatus.SUCCESS.equals(paymentGateway.checkStatus(operationToken))) {
+            throw new RuntimeException("Transfer failed");
+        }
     }
 
 }
